@@ -6,7 +6,9 @@
         <artifactId>proyectoFinal</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    <groupId>es.tfc.MarcosM</groupId>
     <artifactId>domain</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Archetype - domain</name>
     <url>http://maven.apache.org</url>

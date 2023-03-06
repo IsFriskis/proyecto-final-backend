@@ -6,19 +6,30 @@
         <artifactId>proyectoFinal</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>infraestructure</artifactId>
+    <artifactId>infrastructure</artifactId>
     <packaging>war</packaging>
-    <name>Archetype - infraestructure</name>
+    <name>infrastructure Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <dependency>
+            <groupId>es.tfc.MarcosM</groupId>
+            <artifactId>domain</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
     </dependencies>
     <build>
-        <finalName>infraestructure</finalName>
+        <finalName>infrastructure</finalName>
     </build>
 </project>

@@ -12,6 +12,7 @@
     <url>http://maven.apache.org</url>
     <description>Capa de la implementación de servicios y útiles para toda la capa</description>
     <dependencies>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
