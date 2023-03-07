@@ -7,12 +7,16 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>application</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>Archetype - application</name>
     <url>http://maven.apache.org</url>
     <description>Capa de la implementación de servicios y útiles para toda la capa</description>
     <dependencies>
-
+        <dependency>
+            <groupId>es.tfc.MarcosM</groupId>
+            <artifactId>domain</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

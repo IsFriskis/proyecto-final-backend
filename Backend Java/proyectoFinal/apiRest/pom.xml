@@ -7,7 +7,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>apiRest</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>Archetype - apiRest</name>
     <url>http://maven.apache.org</url>
     <description>Parte mas externa de la aplicación, capa de controladores y receptor de datos.</description>
