@@ -2,6 +2,7 @@ package es.tfc.marcosm.application.servicios;
 
 import es.tfc.marcosm.domain.dto.UserDTO;
 import es.tfc.marcosm.domain.repository.UserRepository;
+
 import es.tfc.marcosm.domain.service.UserServiceInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,10 @@ public class UserService implements UserServiceInterface {
     @Override
     public void deleteUser(String id) {
         userRepository.deleteUser(id);
+    }
+
+    @Override
+    public UserDTO selectUserByObject(UserDTO userDTO) {
+        return userRepository.selectUserByObject(userDTO);
     }
 }

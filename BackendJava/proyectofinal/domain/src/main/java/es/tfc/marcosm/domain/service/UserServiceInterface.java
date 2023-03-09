@@ -14,4 +14,6 @@ public interface UserServiceInterface {
     UserDTO updateUser(String id, UserDTO userDTO);
 
     void deleteUser(String id);
+
+    UserDTO selectUserByObject(UserDTO userDTO);
 }

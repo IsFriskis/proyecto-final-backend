@@ -15,4 +15,6 @@ public interface UserRepository {
     String deleteUser(String id);
 
     UserDTO updateUser(UserDTO userDTO);
+
+    UserDTO selectUserByObject(UserDTO userDTO);
 }

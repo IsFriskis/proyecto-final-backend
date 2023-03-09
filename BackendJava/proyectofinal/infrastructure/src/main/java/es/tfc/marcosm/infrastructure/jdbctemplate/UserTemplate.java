@@ -92,7 +92,8 @@ public class UserTemplate implements UserRepository {
 
     }
 
-    private UserDTO selectUserByObject(UserDTO userDTO) {
+    @Override
+    public UserDTO selectUserByObject(UserDTO userDTO) {
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("username", userDTO.getUsername());
         params.addValue("mail", userDTO.getMail());
