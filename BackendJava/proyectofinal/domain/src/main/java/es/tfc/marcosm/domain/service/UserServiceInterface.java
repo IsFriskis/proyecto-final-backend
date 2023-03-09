@@ -6,4 +6,12 @@ import java.util.List;
 
 public interface UserServiceInterface {
     List<UserDTO> selectAllUsers();
+
+    UserDTO selectUserById(String id);
+
+    UserDTO createUser(UserDTO user);
+
+    UserDTO updateUser(String id, UserDTO userDTO);
+
+    void deleteUser(String id);
 }

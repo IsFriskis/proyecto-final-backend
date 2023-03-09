@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +32,27 @@ public class UserController {
     @GetMapping(value = "/all")
     public List<UserTO> selectAllUsers() {
         return userMapper.toTOList(userService.selectAllUsers());
+    }
+
+    @GetMapping(value = "/{id}")
+    public UserTO selectUserById(@PathVariable String id) {
+        return userMapper.toTO(userService.selectUserById(id));
+    }
+
+    @PostMapping(value = "/create")
+    public UserTO createUser(@RequestBody UserTO userTO) {
+        return userMapper.toTO(userService.createUser(userMapper.toDTO(userTO)));
+    }
+
+    @PutMapping(value = "/update/{id}")
+    public UserTO updateUser(@PathVariable String id, @RequestBody UserTO userTO) {
+        return userMapper.toTO(userService.updateUser(id, userMapper.toDTO(userTO)));
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public String deleteUser(@PathVariable String id) {
+        userService.deleteUser(id);
+        return "El usuario con la id: " + id + " ha sido eliminado";
     }
 
     private HttpHeaders getHeader() {

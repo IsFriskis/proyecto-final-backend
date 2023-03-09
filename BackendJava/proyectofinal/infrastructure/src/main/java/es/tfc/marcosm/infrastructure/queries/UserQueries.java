@@ -13,4 +13,20 @@ public class UserQueries {
 
     @Value("${selectAllUsers}")
     private String selectAllUsers;
+
+    @Value("${selectUserById}")
+    private String selectUserById;
+
+    @Value("${selectUserByObject}")
+    private String selectUserByObject;
+
+    @Value("${createUser}")
+    private String createUser;
+
+    @Value("${updateUser}")
+    private String updateUser;
+
+    @Value("${deleteUser}")
+    private String deleteUser;
+
 }

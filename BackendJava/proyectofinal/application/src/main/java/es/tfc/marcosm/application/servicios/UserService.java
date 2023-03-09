@@ -19,4 +19,25 @@ public class UserService implements UserServiceInterface {
     public List<UserDTO> selectAllUsers() {
         return userRepository.selectAllUsers();
     }
+
+    @Override
+    public UserDTO selectUserById(String id) {
+        return userRepository.selectUserById(id);
+    }
+
+    @Override
+    public UserDTO createUser(UserDTO user) {
+        return userRepository.createUser(user);
+    }
+
+    @Override
+    public UserDTO updateUser(String id, UserDTO userDTO) {
+        userDTO.setId(id);
+        return userRepository.updateUser(userDTO);
+    }
+
+    @Override
+    public void deleteUser(String id) {
+        userRepository.deleteUser(id);
+    }
 }

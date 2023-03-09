@@ -8,8 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class UserEntity {
-    public String id;
-    public String username;
-    public String mail;
-    public String password;
+    private String id;
+    private String username;
+    private String mail;
+    private String password;
 }
