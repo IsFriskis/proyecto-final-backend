@@ -15,7 +15,7 @@ public class GameRowMapper implements RowMapper<GameEntity> {
                 .id(rs.getInt("id"))
                 .score(rs.getFloat("score"))
                 .date(toLocalDateTime(rs.getTimestamp("date")))
-                .userId(rs.getInt("user_id"))
+                .userId(rs.getString("user_id"))
                 .build();
     }
 }

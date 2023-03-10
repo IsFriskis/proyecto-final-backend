@@ -55,7 +55,7 @@ foreign key (user_id) references user(id) on delete cascade
 create table if not exists game(
 id integer primary key auto_increment,
 score float,
-date datetime,
+date datetime default now(),
 user_id varchar(36),
 foreign key (user_id) references user(id) on delete cascade
 );

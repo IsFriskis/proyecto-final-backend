@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -41,11 +42,13 @@ public class GameTemplate implements GameRepository {
     public GameDTO createGame(GameDTO gameDTO){
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("score", gameDTO.getScore());
-        params.addValue("date", gameDTO.getDate());
+        if(gameDTO.getDate() == null){
+            gameDTO.setDate(LocalDateTime.now());
+        }
         params.addValue("user_id", gameDTO.getUserId());
         namedParameterJdbcTemplate.update(gameQueries.getCreateGame(), params);
 
-        return selectGameById(gameDTO.getId());
+        return selectGameByObject(gameDTO);
     }
 
     @Override
@@ -86,10 +89,10 @@ public class GameTemplate implements GameRepository {
             toReturn.setDate(gameOriginal.getDate());
         }
         if (gameDTO.getUserId() != null) {
-            params.addValue("userId", gameDTO.getUserId());
+            params.addValue("user_id", gameDTO.getUserId());
             toReturn.setUserId(gameDTO.getUserId());
         }else {
-            params.addValue("userId",   gameOriginal.getUserId());
+            params.addValue("user_id",   gameOriginal.getUserId());
             toReturn.setUserId(gameOriginal.getUserId());
         }
 
@@ -102,7 +105,6 @@ public class GameTemplate implements GameRepository {
     public GameDTO selectGameByObject(GameDTO gameDTO){
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("score", gameDTO.getScore());
-        params.addValue("date", gameDTO.getDate());
         params.addValue("user_id", gameDTO.getUserId());
 
         return gameMapper.toDTO(namedParameterJdbcTemplate.queryForObject(gameQueries.getSelectGameByObject(), params, new GameRowMapper()));

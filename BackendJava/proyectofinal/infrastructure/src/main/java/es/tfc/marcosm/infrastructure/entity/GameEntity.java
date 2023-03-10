@@ -13,5 +13,5 @@ public class GameEntity {
     private Integer id;
     private Float score;
     private LocalDateTime date;
-    private Integer userId;
+    private String userId;
 }

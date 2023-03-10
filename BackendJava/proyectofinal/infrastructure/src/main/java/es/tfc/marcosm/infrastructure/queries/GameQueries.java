@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
-@PropertySource(value = "userQueries.properties")
+@PropertySource(value = "gameQueries.properties")
 public class GameQueries {
     @Value("${selectAllGames}")
     private String selectAllGames;
