@@ -39,6 +39,72 @@ public class GameTemplate implements GameRepository {
     }
     @Override
     public GameDTO createGame(GameDTO gameDTO){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("score", gameDTO.getScore());
+        params.addValue("date", gameDTO.getDate());
+        params.addValue("user_id", gameDTO.getUserId());
+        namedParameterJdbcTemplate.update(gameQueries.getCreateGame(), params);
 
+        return selectGameById(gameDTO.getId());
+    }
+
+    @Override
+    public String deleteGame(Integer id){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("id", id);
+        namedParameterJdbcTemplate.update(gameQueries.getDeleteGame(), params);
+
+        return "Game borrado con éxito";
+    }
+
+    @Override
+    public GameDTO updateGame(GameDTO gameDTO){
+
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        GameDTO gameOriginal = selectGameById((gameDTO.getId()));
+        GameDTO toReturn = new GameDTO();
+        if(gameDTO.getId() != null){
+            params.addValue("id", gameDTO.getId());
+            toReturn.setId(gameDTO.getId());
+        }else {
+            params.addValue("id", gameOriginal.getId());
+            toReturn.setId(gameOriginal.getId());
+        }
+        if(gameDTO.getScore() != null){
+            params.addValue("score", gameDTO.getScore());
+            toReturn.setScore(gameDTO.getScore());
+        } else{
+            params.addValue("score", gameOriginal.getScore());
+            toReturn.setScore(gameOriginal.getScore());
+        }
+
+        if(gameDTO.getDate() != null){
+            params.addValue("date", gameDTO.getDate());
+            toReturn.setDate(gameDTO.getDate());
+        }else{
+            params.addValue("date", gameOriginal.getDate());
+            toReturn.setDate(gameOriginal.getDate());
+        }
+        if (gameDTO.getUserId() != null) {
+            params.addValue("userId", gameDTO.getUserId());
+            toReturn.setUserId(gameDTO.getUserId());
+        }else {
+            params.addValue("userId",   gameOriginal.getUserId());
+            toReturn.setUserId(gameOriginal.getUserId());
+        }
+
+        namedParameterJdbcTemplate.update(gameQueries.getUpdateGame(),params);
+
+        return toReturn;
+    }
+
+    @Override
+    public GameDTO selectGameByObject(GameDTO gameDTO){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("score", gameDTO.getScore());
+        params.addValue("date", gameDTO.getDate());
+        params.addValue("user_id", gameDTO.getUserId());
+
+        return gameMapper.toDTO(namedParameterJdbcTemplate.queryForObject(gameQueries.getSelectGameByObject(), params, new GameRowMapper()));
     }
 }

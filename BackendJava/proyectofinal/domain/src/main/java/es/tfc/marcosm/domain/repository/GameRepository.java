@@ -8,4 +8,12 @@ public interface GameRepository {
     List<GameDTO> selectAllGames();
 
     GameDTO selectGameById(Integer id);
+
+    GameDTO createGame(GameDTO gameDTO);
+
+    String deleteGame(Integer id);
+
+    GameDTO updateGame(GameDTO gameDTO);
+
+    GameDTO selectGameByObject(GameDTO gameDTO);
 }

@@ -18,10 +18,10 @@ timestart datetime default now(),
 timeend datetime, 
 review boolean default false,
 user_id varchar(36),
-foreign key (user_id) references user(id)
+foreign key (user_id) references user(id) on delete cascade
 );
 
-create table if not exists rol(
+create table if not exists role(
 id integer primary key auto_increment,
 name varchar(20),
 description varchar(100)
@@ -29,10 +29,10 @@ description varchar(100)
 
 create table if not exists permission(
 id integer primary key auto_increment,
-rol_id integer not null,
-foreign key (rol_id) references rol(id),
+role_id integer not null,
+foreign key (role_id) references role(id),
 user_id varchar(36),
-foreign key (user_id) references user(id) 
+foreign key (user_id) references user(id) on delete cascade
 );
 
 create table if not exists warnlevel(
@@ -49,7 +49,7 @@ warnlevel_id integer,
 foreign key (warnlevel_id) references warnlevel(id),
 date datetime default now(),
 user_id varchar(36),
-foreign key (user_id) references user(id)
+foreign key (user_id) references user(id) on delete cascade
 );
 
 create table if not exists game(
@@ -57,5 +57,5 @@ id integer primary key auto_increment,
 score float,
 date datetime,
 user_id varchar(36),
-foreign key (user_id) references user(id)
+foreign key (user_id) references user(id) on delete cascade
 );

@@ -15,25 +15,25 @@ insert into ban(description, user_id)
 values("La lió el perro" , (SELECT id from user where username = "Usuario1"));
 
 
-/*Tabla de roles*/
-insert into rol(name, description)
-values("Standard", "Es un rol para el 98% de los usuarios");
+/*Tabla de rolees*/
+insert into role(name, description)
+values("Standard", "Es un role para el 98% de los usuarios");
 
-insert into rol(name, description)
+insert into role(name, description)
 values("Moderador", "Puede colocar warns a todos los usuarios");
 
-insert into rol(name, description)
+insert into role(name, description)
 values("Administrador", "Es capaz de revisar las peticiones de ban");
 
 
 /*Tabla de Permissions*/
-insert into permission(rol_id, user_id)
+insert into permission(role_id, user_id)
 values (3, (SELECT id from user where username = "Usuario1"));
 
-insert into permission(rol_id, user_id)
+insert into permission(role_id, user_id)
 values (2, (SELECT id from user where username = "Usuario2"));
 
-insert into permission(rol_id, user_id)
+insert into permission(role_id, user_id)
 values (1, (SELECT id from user where username = "Usuario3"));
 
 
