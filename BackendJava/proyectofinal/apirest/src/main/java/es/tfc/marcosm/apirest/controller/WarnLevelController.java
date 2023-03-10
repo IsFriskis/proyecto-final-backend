@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +32,29 @@ public class WarnLevelController {
     public List<WarnLevelTO> selectAllWarnLevels(){
         return warnLevelMapper.toTOList(warnLevelService.selectAllWarnLevels());
     }
+
+    @GetMapping(value = "/{id}")
+    public WarnLevelTO selectWarnLevelById(@PathVariable Integer id){
+        return warnLevelMapper.toTO(warnLevelService.selectWarnLevelById(id));
+    }
+
+
+
+    @PostMapping(value = "/create")
+    public WarnLevelTO createWarnLevel(@RequestBody WarnLevelTO warnLevelTO){
+        return warnLevelMapper.toTO(warnLevelService.createWarnLevel(warnLevelMapper.toDTO(warnLevelTO)));
+    }
+
+    @PutMapping(value = "/update/{id}")
+    public WarnLevelTO updateWarnLevel(@PathVariable Integer id, @RequestBody WarnLevelTO warnLevelTO){
+        return warnLevelMapper.toTO(warnLevelService.updateWarnLevel(id, warnLevelMapper.toDTO(warnLevelTO)));
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public String deleteWarnLevel(@PathVariable Integer id){
+        return warnLevelService.deleteWarnLevel(id);
+    }
+
     private HttpHeaders getHeader() {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/json");

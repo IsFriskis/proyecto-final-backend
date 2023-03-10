@@ -64,20 +64,20 @@ public class WarnLevelTemplate implements WarnLevelRepository {
         MapSqlParameterSource params = new MapSqlParameterSource();
         WarnLevelDTO warnLevelOriginal = selectWarnLevelById(warnLevelDTO.getId());
         WarnLevelDTO toReturn = new WarnLevelDTO();
-        if(warnLevelDTO.getName() != null){
-            params.addValue("name", warnLevelDTO.getName());
-            toReturn.setName(warnLevelDTO.getName());
+        if(warnLevelDTO.getId() != null){
+            params.addValue("id", warnLevelDTO.getId());
+            toReturn.setId(warnLevelDTO.getId());
         }else{
-            params.addValue("name", warnLevelOriginal.getName());
-            toReturn.setName(warnLevelOriginal.getName());
+            params.addValue("id", warnLevelOriginal.getId());
+            toReturn.setId(warnLevelOriginal.getId());
         }
 
-        if(warnLevelDTO.getDescription()!= null){
-            params.addValue("description", warnLevelDTO.getDescription());
-            toReturn.setDescription(warnLevelDTO.getDescription());
+        if(warnLevelDTO.getName()!= null){
+            params.addValue("name", warnLevelDTO.getName());
+            toReturn.setName(warnLevelDTO.getName());
         } else{
-            params.addValue("description", warnLevelOriginal.getDescription());
-            toReturn.setDescription(warnLevelOriginal.getDescription());
+            params.addValue("name", warnLevelOriginal.getName());
+            toReturn.setName(warnLevelOriginal.getName());
         }
 
         if(warnLevelDTO.getDescription()!= null){

@@ -10,20 +10,20 @@ import org.springframework.stereotype.Component;
 @PropertySource(value = "warnLevelQueries.properties")
 public class WarnLevelQueries {
 
-    @Value("selectAllWarnLevels")
+    @Value("${selectAllWarnLevels}")
     private String selectAllWarnLevels;
 
-    @Value("selectWarnLevelById")
+    @Value("${selectWarnLevelById}")
     private String selectWarnLevelById;
 
-    @Value("createWarnLevel")
+    @Value("${createWarnLevel}")
     private String createWarnLevel;
 
-    @Value("deleteWarnLevel")
+    @Value("${deleteWarnLevel}")
     private String deleteWarnLevel;
-    @Value("updateWarnLevel")
+    @Value("${updateWarnLevel}")
     private String updateWarnLevel;
 
-    @Value("selectWarnLevelByObject")
+    @Value("${selectWarnLevelByObject}")
     private String selectWarnLevelByObject;
 }
