@@ -24,18 +24,18 @@ public class WarnLevelTemplate implements WarnLevelRepository {
     private final WarnLevelQueries warnLevelQueries;
 
     @Autowired
-    private final WarnLevelMapperDTO warnLevelMapperDTO;
+    private final WarnLevelMapperDTO warnLevelMapper;
 
     @Override
     public List<WarnLevelDTO> selectAllWarnLevels() {
-        return warnLevelMapperDTO.toDTOList(namedParameterJdbcTemplate.query(warnLevelQueries.getSelectAllWarnLevels(), new WarnLevelRowMapper()));
+        return warnLevelMapper.toDTOList(namedParameterJdbcTemplate.query(warnLevelQueries.getSelectAllWarnLevels(), new WarnLevelRowMapper()));
     }
 
     @Override
     public WarnLevelDTO selectWarnLevelById(Integer id) {
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("id", id);
-        return warnLevelMapperDTO.toDTO(namedParameterJdbcTemplate.queryForObject(warnLevelQueries.getSelectWarnLevelById(), params, new WarnLevelRowMapper()));
+        return warnLevelMapper.toDTO(namedParameterJdbcTemplate.queryForObject(warnLevelQueries.getSelectWarnLevelById(), params, new WarnLevelRowMapper()));
     }
 
     @Override
@@ -99,6 +99,6 @@ public class WarnLevelTemplate implements WarnLevelRepository {
         params.addValue("name", warnLevelDTO.getName());
         params.addValue("description", warnLevelDTO.getDescription());
 
-        return warnLevelMapperDTO.toDTO(namedParameterJdbcTemplate.queryForObject(warnLevelQueries.getSelectWarnLevelByObject(), params, new WarnLevelRowMapper()));
+        return warnLevelMapper.toDTO(namedParameterJdbcTemplate.queryForObject(warnLevelQueries.getSelectWarnLevelByObject(), params, new WarnLevelRowMapper()));
     }
 }
