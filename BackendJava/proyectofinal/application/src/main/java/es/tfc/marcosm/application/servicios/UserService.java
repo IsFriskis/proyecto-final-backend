@@ -19,6 +19,9 @@ public class UserService implements UserServiceInterface {
     @Override
     public List<UserDTO> selectAllUsers() {
         return userRepository.selectAllUsers();
+
+
+
     }
 
     @Override
