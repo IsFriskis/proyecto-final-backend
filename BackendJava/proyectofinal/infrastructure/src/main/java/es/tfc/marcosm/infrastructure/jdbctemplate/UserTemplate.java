@@ -49,6 +49,7 @@ public class UserTemplate implements UserRepository {
 
         namedParameterJdbcTemplate.update(userQueries.getCreateUser(), params);
 
+        //TODO: create permission with roles too
         return selectUserByObject(userDTO);
     }
 
