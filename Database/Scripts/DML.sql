@@ -2,7 +2,7 @@ use db_proyectofinal;
 
 /*Tabla de usuarios*/
 insert into user (username, mail, password)
-values("Usuario1", "Usuario1@gmail.com", "Abc123..");
+values("Usuario4", "Usuario4@gmail.com", "Abc123..");
 
 insert into user (username, mail, password)
 values("Usuario2", "Usuario2@gmail.com", "Abc123..");
@@ -11,8 +11,8 @@ insert into user (username, mail, password)
 values("Usuario3", "Usuario3@gmail.com", "Abc123..");
 
 /*Tabla de ban*/
-insert into ban(description, user_id)
-values("La lió el perro" , (SELECT id from user where username = "Usuario1"));
+insert into ban(title, description, user_id)
+values("La lio mucho","Es un cavernicola" , (SELECT id from user where username = "Usuario1"));
 
 
 /*Tabla de rolees*/

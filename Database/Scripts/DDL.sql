@@ -12,7 +12,8 @@ password varchar (50)
 );
 
 create table if not exists ban(
-id integer,
+id integer primary key auto_increment,
+title varchar(50),
 description varchar(200),
 timestart datetime default now(),
 timeend datetime, 

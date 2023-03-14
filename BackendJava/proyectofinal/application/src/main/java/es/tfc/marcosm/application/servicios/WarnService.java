@@ -28,6 +28,7 @@ public class WarnService implements WarnServiceInterface {
 
     @Override
     public WarnDTO createWarn(WarnDTO warnDTO){
+        //TODO: check how many warns there are.Converte to integer references and add ban
         return warnRepository.createWarn(warnDTO);
     }
 
