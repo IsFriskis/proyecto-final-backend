@@ -117,6 +117,7 @@ public class BanTemplate implements BanRepository {
         return "Ban con id: " + id + " eliminado";
     }
 
+    //TODO: Set review ban
     @Override
     public BanDTO selectBanByObject(BanDTO banDTO) {
         MapSqlParameterSource params = new MapSqlParameterSource();

@@ -28,7 +28,7 @@ public class BanQueries {
     @Value("${updateBan}")
     private String updateBan;
 
-    @Value("${selectBanByObject")
+    @Value("${selectBanByObject}")
     private String selectBanByObject;
 
 

@@ -16,9 +16,9 @@ id integer primary key auto_increment,
 title varchar(50),
 description varchar(200),
 timestart datetime default now(),
-timeend datetime, 
+timeend datetime default '2000-01-01 01:00:00', 
 review boolean default false,
-user_id varchar(36),
+user_id varchar(36) not null unique,
 foreign key (user_id) references user(id) on delete cascade
 );
 
