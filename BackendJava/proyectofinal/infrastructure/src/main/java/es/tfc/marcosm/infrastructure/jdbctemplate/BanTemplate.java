@@ -117,7 +117,13 @@ public class BanTemplate implements BanRepository {
         return "Ban con id: " + id + " eliminado";
     }
 
-    //TODO: Set review ban
+    @Override
+    public String setBanReviewed(Integer id){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("id", id);
+        namedParameterJdbcTemplate.update(banQueries.getSetBanReviewed(), params);
+        return "Ban revisado con id: " + id;
+    }
     @Override
     public BanDTO selectBanByObject(BanDTO banDTO) {
         MapSqlParameterSource params = new MapSqlParameterSource();

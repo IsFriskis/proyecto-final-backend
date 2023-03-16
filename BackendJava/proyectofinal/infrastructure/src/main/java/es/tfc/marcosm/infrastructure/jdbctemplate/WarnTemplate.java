@@ -128,4 +128,11 @@ public class WarnTemplate implements WarnRepository {
 
         return warnMapper.toDTO(namedParameterJdbcTemplate.queryForObject(warnQueries.getSelectWarnByObject(), params, new WarnRowMapper()));
     }
+
+    @Override
+    public List<WarnDTO> selectWarnByUserId(String userId){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("user_id", userId);
+        return warnMapper.toDTOList(namedParameterJdbcTemplate.query(warnQueries.getSelectWarnsByUserId(), params, new WarnRowMapper()));
+    }
 }

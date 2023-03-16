@@ -51,4 +51,9 @@ public class BanService implements BanServiceInterface {
     public BanDTO selectBanByObject(BanDTO banDTO){
         return banRepository.selectBanByObject(banDTO);
     }
+
+    @Override
+    public String setReviewedBan(Integer id){
+        return banRepository.setBanReviewed(id);
+    }
 }

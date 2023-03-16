@@ -17,5 +17,7 @@ public interface BanRepository {
 
     String deleteBan(Integer id);
 
+    String setBanReviewed(Integer id);
+
     BanDTO selectBanByObject(BanDTO banDTO);
 }

@@ -1,6 +1,8 @@
 package es.tfc.marcosm.infrastructure.jdbctemplate;
 
+import es.tfc.marcosm.domain.dto.PermissionDTO;
 import es.tfc.marcosm.domain.dto.UserDTO;
+import es.tfc.marcosm.domain.repository.PermissionRepository;
 import es.tfc.marcosm.domain.repository.UserRepository;
 import es.tfc.marcosm.infrastructure.mapper.UserMapperDTO;
 import es.tfc.marcosm.infrastructure.queries.UserQueries;
@@ -16,6 +18,9 @@ import java.util.List;
 @Repository
 @AllArgsConstructor
 public class UserTemplate implements UserRepository {
+
+    @Autowired
+    private final PermissionRepository permissionRepository;
 
     @Autowired
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -49,8 +54,12 @@ public class UserTemplate implements UserRepository {
 
         namedParameterJdbcTemplate.update(userQueries.getCreateUser(), params);
 
-        //TODO: create permission with roles too
-        return selectUserByObject(userDTO);
+        UserDTO toReturn = selectUserByObject(userDTO);
+        PermissionDTO toPermissionInsert = new PermissionDTO();
+        toPermissionInsert.setUserId(toReturn.getId());
+        toPermissionInsert.setRoleId(1);
+        permissionRepository.createPermission(toPermissionInsert);
+        return toReturn;
     }
 
     @Override

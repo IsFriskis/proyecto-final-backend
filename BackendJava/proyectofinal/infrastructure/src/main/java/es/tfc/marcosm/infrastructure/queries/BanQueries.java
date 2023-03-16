@@ -31,6 +31,7 @@ public class BanQueries {
     @Value("${selectBanByObject}")
     private String selectBanByObject;
 
-
+    @Value("${setBanReviewed}")
+    private String setBanReviewed;
 
 }

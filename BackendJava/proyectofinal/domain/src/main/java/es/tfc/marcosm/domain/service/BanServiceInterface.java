@@ -18,4 +18,6 @@ public interface BanServiceInterface {
     String deleteBan(Integer id);
 
     BanDTO selectBanByObject(BanDTO banDTO);
+
+    String setReviewedBan(Integer id);
 }

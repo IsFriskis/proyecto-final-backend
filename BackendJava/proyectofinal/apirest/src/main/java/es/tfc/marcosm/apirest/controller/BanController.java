@@ -50,4 +50,9 @@ public class BanController {
         return banService.deleteBan(id);
     }
 
+    @PatchMapping("/reviewed/{id}")
+    public String setReviewedBan(@PathVariable Integer id){
+        return banService.setReviewedBan(id);
+    }
+
 }
