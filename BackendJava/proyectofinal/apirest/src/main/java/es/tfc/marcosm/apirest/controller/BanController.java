@@ -5,6 +5,9 @@ import es.tfc.marcosm.apirest.to.BanTO;
 import es.tfc.marcosm.domain.service.BanServiceInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +23,11 @@ public class BanController {
     @Autowired
     private final BanMapperTO banMapperTO;
 
+
+    @GetMapping(value = "/status")
+    public ResponseEntity<String> status() {
+        return new ResponseEntity<>("BanController Up", getHeader(), HttpStatus.OK);
+    }
     @GetMapping("/all")
     public List<BanTO> selectAllBan(){
         return banMapperTO.toTOList(banService.selectAllBans());
@@ -53,6 +61,12 @@ public class BanController {
     @PatchMapping("/reviewed/{id}")
     public String setReviewedBan(@PathVariable Integer id){
         return banService.setReviewedBan(id);
+    }
+
+    private HttpHeaders getHeader() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-type", "application/json");
+        return headers;
     }
 
 }

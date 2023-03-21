@@ -5,6 +5,9 @@ import es.tfc.marcosm.apirest.to.PermissionTO;
 import es.tfc.marcosm.domain.service.PermissionServiceInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +23,10 @@ public class PermissionController {
     @Autowired
     private final PermissionMapperTO permissionMapper;
 
+    @GetMapping(value = "/status")
+    public ResponseEntity<String> status() {
+        return new ResponseEntity<>("PermissionController Up", getHeader(), HttpStatus.OK);
+    }
     @GetMapping(value = "/all")
     public List<PermissionTO> selectAllPermissions(){
         return permissionMapper.toTOList(permissionService.selectAllPermissions());
@@ -47,5 +54,11 @@ public class PermissionController {
     @DeleteMapping(value = "/delete/{id}")
     public String deletePermission(@PathVariable Integer id){
         return permissionService.deletePermission(id);
+    }
+
+    private HttpHeaders getHeader() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-type", "application/json");
+        return headers;
     }
 }
