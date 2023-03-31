@@ -59,6 +59,7 @@ public class PermissionController {
     private HttpHeaders getHeader() {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/json");
+        headers.add("Access-Control-Allow-Origin"," http://localhost:3000");
         return headers;
     }
 }

@@ -19,16 +19,17 @@ public class MainController {
     private final MainServiceInterface mainService;
 
     @GetMapping(value = "/status")
-    public ResponseEntity<String> status() {
+    public ResponseEntity<Boolean> status() {
         if(mainService.allControllerStatus()) {
-            return new ResponseEntity<>("AllControllers Up", getHeader(), HttpStatus.OK);
+            return new ResponseEntity<>(true, getHeader(), HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("Service Unavailable", getHeader(), HttpStatus.SERVICE_UNAVAILABLE);
+            return new ResponseEntity<>(false, getHeader(), HttpStatus.SERVICE_UNAVAILABLE);
         }
     }
     private HttpHeaders getHeader() {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/json");
+        headers.add("Access-Control-Allow-Origin"," http://localhost:3000");
         return headers;
     }
 }
