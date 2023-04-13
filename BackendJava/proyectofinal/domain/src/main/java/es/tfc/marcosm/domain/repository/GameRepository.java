@@ -16,4 +16,6 @@ public interface GameRepository {
     GameDTO updateGame(GameDTO gameDTO);
 
     GameDTO selectGameByObject(GameDTO gameDTO);
+
+    Integer selectGamesAmountByUserId(String userId);
 }

@@ -18,4 +18,6 @@ public interface WarnRepository {
     WarnDTO selectWarnByObject(WarnDTO warnDTO);
 
     List<WarnDTO> selectWarnByUserId(String userId);
+
+    Integer selectWarnsAmountByUserId(String userId);
 }

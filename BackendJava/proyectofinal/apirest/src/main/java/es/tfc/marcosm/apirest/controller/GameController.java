@@ -52,6 +52,10 @@ public class GameController {
         return gameService.deleteGame(id);
     }
 
+    @GetMapping(value = "/{userId}")
+    public Integer selectGamesAmountByUserId(@PathVariable String userId){
+        return gameService.selectGamesAmountByUserId(userId);
+    }
 
 
 

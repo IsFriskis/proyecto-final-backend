@@ -10,6 +10,8 @@ public interface UserRepository {
 
     UserDTO selectUserById(String id);
 
+    UserDTO selectUserByMail(String mail);
+
     UserDTO createUser(UserDTO userDTO);
 
     String deleteUser(String id);
@@ -17,4 +19,8 @@ public interface UserRepository {
     UserDTO updateUser(UserDTO userDTO);
 
     UserDTO selectUserByObject(UserDTO userDTO);
+
+    List<UserDTO> selectUsersByNameFilter(String id, Integer pageableLimit, Integer offset);
+
+    Integer selectPageableLimit(String username, Integer pageableLimit);
 }

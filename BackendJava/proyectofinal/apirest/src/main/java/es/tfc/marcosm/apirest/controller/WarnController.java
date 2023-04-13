@@ -1,6 +1,7 @@
 package es.tfc.marcosm.apirest.controller;
 
 import es.tfc.marcosm.apirest.mapper.WarnMapperTO;
+import es.tfc.marcosm.apirest.to.UserTO;
 import es.tfc.marcosm.apirest.to.WarnTO;
 import es.tfc.marcosm.domain.service.WarnServiceInterface;
 import lombok.AllArgsConstructor;
@@ -51,6 +52,11 @@ public class WarnController {
     @DeleteMapping(value = "/delete/{id}")
     public String deleteWarn(@PathVariable Integer id) {
         return warnService.deleteWarn(id);
+    }
+
+    @GetMapping(value = "/all/{userId}")
+    public Integer selectWarnsAmountByUserId(@PathVariable String userId) {
+        return warnService.selectWarnsAmountByUserId(userId);
     }
 
     private HttpHeaders getHeader() {

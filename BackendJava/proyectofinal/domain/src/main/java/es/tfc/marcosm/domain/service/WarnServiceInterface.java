@@ -16,4 +16,6 @@ public interface WarnServiceInterface {
     String deleteWarn(Integer id);
 
     WarnDTO selectWarnByObject(WarnDTO warnDTO);
+
+    Integer selectWarnsAmountByUserId(String userId);
 }

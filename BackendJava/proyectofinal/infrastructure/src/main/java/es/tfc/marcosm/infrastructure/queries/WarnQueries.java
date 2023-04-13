@@ -29,4 +29,7 @@ public class WarnQueries {
 
     @Value("${selectWarnsByUserId}")
     private String selectWarnsByUserId;
+
+    @Value("${selectWarnsAmountByUserId}")
+    private String selectWarnsAmountByUserId;
 }

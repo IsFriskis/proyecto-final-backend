@@ -26,4 +26,7 @@ public class GameQueries {
     @Value("${selectGameByObject}")
     private String selectGameByObject;
 
+    @Value("${selectGamesAmountByUserId}")
+    private String selectGamesAmountByUserId;
+
 }

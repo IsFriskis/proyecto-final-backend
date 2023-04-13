@@ -99,4 +99,9 @@ public class WarnService implements WarnServiceInterface {
     public WarnDTO selectWarnByObject(WarnDTO warnDTO){
         return warnRepository.selectWarnByObject(warnDTO);
     }
+
+    @Override
+    public Integer selectWarnsAmountByUserId(String userId){
+        return warnRepository.selectWarnsAmountByUserId(userId);
+    }
 }

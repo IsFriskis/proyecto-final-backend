@@ -17,6 +17,9 @@ public class UserQueries {
     @Value("${selectUserById}")
     private String selectUserById;
 
+    @Value("${selectUserByMail}")
+    private String selectUserByMail;
+
     @Value("${selectUserByObject}")
     private String selectUserByObject;
 
@@ -28,5 +31,11 @@ public class UserQueries {
 
     @Value("${deleteUser}")
     private String deleteUser;
+
+    @Value("${selectUsersByNameFilter}")
+    private String selectUsersByNameFilter;
+
+    @Value("${selectPageableLimit}")
+    private String selectPageableLimit;
 
 }

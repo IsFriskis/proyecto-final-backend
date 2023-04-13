@@ -135,4 +135,10 @@ public class WarnTemplate implements WarnRepository {
         params.addValue("user_id", userId);
         return warnMapper.toDTOList(namedParameterJdbcTemplate.query(warnQueries.getSelectWarnsByUserId(), params, new WarnRowMapper()));
     }
+
+    @Override
+    public Integer selectWarnsAmountByUserId(String userId){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("user_id", userId);
+        return namedParameterJdbcTemplate.query(warnQueries.getSelectWarnsByUserId(), params, new WarnRowMapper()).toArray().length;    }
 }

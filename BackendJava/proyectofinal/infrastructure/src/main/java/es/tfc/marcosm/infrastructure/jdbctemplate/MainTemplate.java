@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 @AllArgsConstructor
 public class MainTemplate implements MainRepository {
 
-    private final String DEFAULT_URL = "http://localhost:8081";
+    private final String DEFAULT_URL = "http://localhost:8083";
     @Override
     public Boolean isApplicationStatus(){
         return allControllersStatus();

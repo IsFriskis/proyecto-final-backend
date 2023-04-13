@@ -47,4 +47,9 @@ public class GameService implements GameServiceInterface {
         return gameRepository.selectGameByObject(gameDTO);
     }
 
+    @Override
+    public Integer selectGamesAmountByUserId(String userId){
+        return gameRepository.selectGamesAmountByUserId(userId);
+    }
+
 }

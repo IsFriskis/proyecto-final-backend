@@ -16,4 +16,6 @@ public interface GameServiceInterface {
     GameDTO updateGame(Integer id, GameDTO gameDTO);
 
     GameDTO selectGameByObject(GameDTO gameDTO);
+
+    Integer selectGamesAmountByUserId(String userId);
 }

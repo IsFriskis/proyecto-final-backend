@@ -109,4 +109,11 @@ public class GameTemplate implements GameRepository {
 
         return gameMapper.toDTO(namedParameterJdbcTemplate.queryForObject(gameQueries.getSelectGameByObject(), params, new GameRowMapper()));
     }
+
+    @Override
+    public Integer selectGamesAmountByUserId(String userId) {
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("user_id", userId);
+        return namedParameterJdbcTemplate.queryForObject(gameQueries.getSelectGamesAmountByUserId(), params , Integer.class);
+    }
 }

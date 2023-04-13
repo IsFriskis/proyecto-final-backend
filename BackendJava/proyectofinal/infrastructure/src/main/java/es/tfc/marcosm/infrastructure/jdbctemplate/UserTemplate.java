@@ -46,6 +46,13 @@ public class UserTemplate implements UserRepository {
     }
 
     @Override
+    public UserDTO selectUserByMail(String mail){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("mail", mail);
+        return userMapper.toDTO(namedParameterJdbcTemplate.queryForObject(userQueries.getSelectUserByMail(), params, new UserRowMapper()));
+    }
+
+    @Override
     public UserDTO createUser(UserDTO userDTO) {
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("username", userDTO.getUsername());
@@ -110,5 +117,24 @@ public class UserTemplate implements UserRepository {
         params.addValue("password", userDTO.getPassword());
 
         return userMapper.toDTO(namedParameterJdbcTemplate.queryForObject(userQueries.getSelectUserByObject(), params, new UserRowMapper()));
+    }
+
+    @Override
+    public List<UserDTO> selectUsersByNameFilter(String username, Integer pageableLimit, Integer offset){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("username", username);
+        params.addValue("pageable_limit", pageableLimit);
+        params.addValue("offset", offset);
+
+        return userMapper.toDTOList(namedParameterJdbcTemplate.query(userQueries.getSelectUsersByNameFilter(), params, new UserRowMapper()));
+    }
+
+    @Override
+    public Integer selectPageableLimit(String username, Integer pageableLimit) {
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("username", username);
+        params.addValue("pageable_limit", pageableLimit);
+
+        return namedParameterJdbcTemplate.queryForObject(userQueries.getSelectPageableLimit(), params, Integer.class);
     }
 }
