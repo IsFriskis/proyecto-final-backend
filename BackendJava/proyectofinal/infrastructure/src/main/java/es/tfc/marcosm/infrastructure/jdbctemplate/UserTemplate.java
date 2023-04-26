@@ -137,4 +137,20 @@ public class UserTemplate implements UserRepository {
 
         return namedParameterJdbcTemplate.queryForObject(userQueries.getSelectPageableLimit(), params, Integer.class);
     }
+
+    @Override
+    public List<UserDTO> checkIfUsernameIsValid(String username){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("username", username);
+
+        return userMapper.toDTOList(namedParameterJdbcTemplate.query(userQueries.getCheckIfUsernameIsValid(), params, new UserRowMapper()));
+    }
+
+    @Override
+    public List<UserDTO> checkIfMailIsValid(String mail){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("mail", mail);
+
+        return userMapper.toDTOList(namedParameterJdbcTemplate.query(userQueries.getCheckIfMailIsValid(), params, new UserRowMapper()));
+    }
 }

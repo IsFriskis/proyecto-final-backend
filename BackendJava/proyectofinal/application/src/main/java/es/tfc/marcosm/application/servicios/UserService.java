@@ -110,6 +110,44 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
+    public UserDTO registerProcess(String username, String email, String password){
+        UserDTO user = new UserDTO();
+        List<UserDTO> listsUsername = new ArrayList<>();
+        List<UserDTO> listsMail = new ArrayList<>();
+        try{
+            listsMail = userRepository.checkIfMailIsValid(email);
+            if(listsMail.size() == 0){
+                throw new EmptyResultDataAccessException(1);
+            } else {
+                return null;
+            }
+        }catch(EmptyResultDataAccessException e){
+            user.setMail(email);
+        }
+        try{
+            listsUsername = userRepository.checkIfUsernameIsValid(username);
+            if(listsUsername.size() == 0){
+                throw new EmptyResultDataAccessException(1);
+            } else {
+                return null;
+            }
+        }catch(EmptyResultDataAccessException e){
+            user.setUsername(username);
+        }
+        if(isPasswordValid(password)){
+            user.setPassword(password);
+        } else{
+            return null;
+        }
+        if(listsUsername.size() == 0 && listsMail.size() == 0 && isPasswordValid(password)){
+            userRepository.createUser(user);
+            return user;
+        } else{
+            return null;
+        }
+    }
+
+    @Override
     public Integer selectPageableLimit(String username, Integer pageableLimit) {
         return userRepository.selectPageableLimit(username, pageableLimit);
     }

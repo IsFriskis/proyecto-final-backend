@@ -83,7 +83,16 @@ public class UserController {
         }else{
             return new ResponseEntity<>(user, getHeader(), HttpStatus.ACCEPTED);
         }
+    }
 
+    @PostMapping(value = "/register/{username}/{email}/{password}")
+    public ResponseEntity<UserTO> registerProcess(@PathVariable String username, @PathVariable String email, @PathVariable String password){
+        UserTO user = userMapper.toTO(userService.registerProcess(username, email, password));
+        if(user == null){
+            return new ResponseEntity<>(user, getHeader(), HttpStatus.EXPECTATION_FAILED);
+        } else{
+            return new ResponseEntity<>(user, getHeader(), HttpStatus.ACCEPTED);
+        }
     }
 
     private HttpHeaders getHeader() {

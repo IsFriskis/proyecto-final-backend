@@ -38,4 +38,10 @@ public class UserQueries {
     @Value("${selectPageableLimit}")
     private String selectPageableLimit;
 
+    @Value("${checkIfUsernameIsValid}")
+    private String checkIfUsernameIsValid;
+
+    @Value("${checkIfMailIsValid}")
+    private String checkIfMailIsValid;
+
 }

@@ -24,5 +24,7 @@ public interface UserServiceInterface {
 
     UserDTO loginProcess(String email, String password);
 
+    UserDTO registerProcess(String email, String username, String password);
+
     Integer selectPageableLimit(String username, Integer pageableLimit);
 }
