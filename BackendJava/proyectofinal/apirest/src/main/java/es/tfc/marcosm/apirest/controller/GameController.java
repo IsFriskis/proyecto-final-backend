@@ -1,9 +1,12 @@
 package es.tfc.marcosm.apirest.controller;
 
 import es.tfc.marcosm.apirest.mapper.GameMapperTO;
+import es.tfc.marcosm.apirest.mapper.RankingMapperTO;
 import es.tfc.marcosm.apirest.to.GameTO;
+import es.tfc.marcosm.apirest.to.RankingTO;
 import es.tfc.marcosm.domain.service.GameServiceInterface;
 import lombok.AllArgsConstructor;
+import org.apache.poi.ss.formula.functions.Rank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,14 +25,24 @@ public class GameController {
     @Autowired
     private final GameMapperTO gameMapper;
 
+    @Autowired
+    private final RankingMapperTO rankingMapperTO;
+
     @GetMapping(value = "/status")
     public ResponseEntity<String> status() {
         return new ResponseEntity<>("GameController Up", getHeader(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/all")
-    public List<GameTO> selectAllGames(){
-        return gameMapper.toTOList(gameService.selectAllGames());
+    public ResponseEntity<List<GameTO>> selectAllGames(){
+        List<GameTO> games = gameMapper.toTOList(gameService.selectAllGames());
+        return new ResponseEntity<>(games, getHeader(), HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping(value = "/ranking")
+    public ResponseEntity<List<RankingTO>> rankingGames(){
+        List<RankingTO> games = rankingMapperTO.toTOList(gameService.rankingGames());
+        return new ResponseEntity<>(games, getHeader(), HttpStatus.ACCEPTED);
     }
 
     @GetMapping(value = "/{id}")
