@@ -53,12 +53,12 @@ values("Griefing", "La lió parda", 3, (SELECT id from user where username = "Us
 
 /*Tabla de game*/
 insert into game(score, user_id)
-values (45000, (SELECT id from user where username = "Usuario2"));
+values (55000, (SELECT id from user where username = "Usuario3"));
 
 insert into game(score, user_id)
 values (35000, (SELECT id from user where username = "Usuario3"));
 
 insert into game(score, user_id)
-values (25000.54, (SELECT id from user where username = "Usuario1"));
+values (25000, (SELECT id from user where username = "Usuario1"));
 
 
