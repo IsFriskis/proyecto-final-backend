@@ -8,7 +8,7 @@ create table if not exists user(
 id varchar(36) primary key default (UUID()),
 username varchar(15) unique,
 mail varchar(25) unique,
-password varchar (50)
+password varchar (150)
 );
 
 create table if not exists ban(
