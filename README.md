@@ -44,3 +44,6 @@ mvn clean install
 ```
 
 9. Ve al IntelliJ Idea y ejecuta el proyecto. (Arriba a la izquierda en la flecha verde)
+
+
+## Con docker
