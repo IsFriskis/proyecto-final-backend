@@ -34,7 +34,7 @@ Con estas tecnologías listadas se ha hecho la aplicación. Spring fue el el fra
 ```
 cd (La ruta que has copiado)
 Ejemplo:
-cd C:\Users\User\Desktop\tfcfrontend
+cd C:\Users\User\Desktop\tfcbackend
 ```
 
 8. Escribe el siguiente comando:
