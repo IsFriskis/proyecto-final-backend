@@ -15,8 +15,6 @@ Con estas tecnologías listadas se ha hecho la aplicación. Spring fue el el fra
 
 # Pasos para la ejecución del proyecto
 
-## Sin docker
-
 1. Instala MySQL en el dispositivo. Dejo un enlace para la instalación [Link](https://www.adslzone.net/esenciales/windows-10/instalar-mysql/)
 
 2. Tendrás en tu dispositivo una aplicación llamada **MySQL Workbench**. Ábrela y haz click el servidor local. Habiendo entrado ahí, abre los dos ficheros que hay en **./Database/Scripts/** y ejecútalos (Haces click en el icono del rayo). Primero el fichero que se llama el DDL y después el archivo que se llama DML.
@@ -44,6 +42,3 @@ mvn clean install
 ```
 
 9. Ve al IntelliJ Idea y ejecuta el proyecto. (Arriba a la izquierda en la flecha verde)
-
-
-## Con docker
