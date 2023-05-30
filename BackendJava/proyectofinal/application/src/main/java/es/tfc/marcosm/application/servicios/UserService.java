@@ -10,6 +10,7 @@ import es.tfc.marcosm.domain.service.UserServiceInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,6 +28,9 @@ public class UserService implements UserServiceInterface {
 
     @Autowired
     private final GameRepository gameRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public List<UserDTO> selectAllUsers() {
@@ -102,7 +106,7 @@ public class UserService implements UserServiceInterface {
             }catch(EmptyResultDataAccessException e){
                 return null;
             }
-            if(user.getPassword().equals(password)){
+            if(passwordEncoder.matches((password), user.getPassword())){
                 return user;
             }
         }
@@ -135,7 +139,7 @@ public class UserService implements UserServiceInterface {
             user.setUsername(username);
         }
         if(isPasswordValid(password)){
-            user.setPassword(password);
+            user.setPassword(passwordEncoder.encode(password));
         } else{
             return null;
         }
